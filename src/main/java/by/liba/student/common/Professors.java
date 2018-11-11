@@ -1,19 +1,19 @@
 package by.liba.student.common;
 
 public class Professors {
-    private int id;
+    private Integer id;
     private String firstName;
     private String secondName;
     private String fatherdName;
     //private Date BirthDate;
-    private int avgMark;
+    private Integer avgMark;
     
     
 	public Professors() {
 		super();
 	}
 	
-	public Professors(int id, String firstName, String secondName, String fatherdName, int avgMark) {
+	public Professors(Integer id, String firstName, String secondName, String fatherdName, int avgMark) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -22,10 +22,10 @@ public class Professors {
 		this.avgMark = avgMark;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -46,10 +46,10 @@ public class Professors {
 	public void setFatherdName(String fatherdName) {
 		this.fatherdName = fatherdName;
 	}
-	public int getAvgMark() {
+	public Integer getAvgMark() {
 		return avgMark;
 	}
-	public void setAvgMark(int avgMark) {
+	public void setAvgMark(Integer avgMark) {
 		this.avgMark = avgMark;
 	}
     

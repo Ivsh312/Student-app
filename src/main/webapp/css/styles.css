@@ -1,7 +1,29 @@
 @charset "UTF-8";
-.container-custom{
+
+.container-custom {
 	width: 10vw;
 }
-.container-custom2{
-width: 	20vw;
+
+.container-custom2 {
+	width: 20vw;
+}
+
+.div-table>table {
+	float: left;
+	width: 600px;
+	border-collapse: collapse;
+	border: 1px solid grey;
+	
+}
+
+th {
+	width: 10%;
+	text-align: center;
+	border: 1px solid black
+}
+
+td{
+	width: 10%;
+	text-align: center;
+	border: 1px solid black;
 }

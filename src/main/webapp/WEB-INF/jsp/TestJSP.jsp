@@ -15,23 +15,25 @@
 		<input type='text' name='firstName'> <input type='text'
 			name='secondName'> <input type='submit' value='NULL'>
 	</form>
-	<table>
-		<thead>
-			<th>FersName</th>
-			<th>SecondName</th>
-		</thead>
-		<tbody>
-			<c:forEach items="${Students}" var="student">
-				<tr>
+	<div>
+		<table>
+			<thead>
+				<th>FersName</th>
+				<th>SecondName</th>
+			</thead>
+			<tbody>
+				<c:forEach items="${Students}" var="student">
+					<tr>
 
-					<td>${student.firstName}</td>
-					<td>${student.secondName}</td>
+						<td>${student.firstName}</td>
+						<td>${student.secondName}</td>
 
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

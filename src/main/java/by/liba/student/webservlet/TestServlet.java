@@ -11,15 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import by.liba.student.common.Groups;
 import by.liba.student.common.Marks;
+import by.liba.student.common.Professors;
 import by.liba.student.common.Students;
 import by.liba.student.common.Studies;
+import by.liba.student.common.Users;
 
 public class TestServlet extends HttpServlet{
     
 	private final static List <Students> STUDENTS = new ArrayList<Students>();
 	private final static List <Marks> MARKS = new ArrayList<Marks>();
 	private final static List <Studies> STUDIES = new ArrayList<Studies>();
+	private final static List <Professors> PROFESSORS = new ArrayList<Professors>();
+	private final static List <Groups> GROUPS = new ArrayList<Groups>();
+	private final static List <Users> USERS = new ArrayList<Users>();
 	private static final long serialVersionUID = -3076373278255669151L;
 
 	@Override
@@ -28,6 +34,10 @@ public class TestServlet extends HttpServlet{
 		    RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/TestJSPcool.jsp");
 		    req.setAttribute("Students", STUDENTS);
 		    req.setAttribute("Marks", MARKS);
+		    req.setAttribute("Studies", STUDIES);
+		    req.setAttribute("Professors", PROFESSORS);
+		    req.setAttribute("Groups", GROUPS);
+		    req.setAttribute("Users", USERS);
 		    requestDispatcher.forward(req, resp);
 	}
 	

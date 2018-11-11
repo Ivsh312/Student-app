@@ -33,6 +33,7 @@
 			<button class="btn btn-success">Send</button>
 		</div>
 	</form>
+	<div class="div-table">
 	<table class="table table-border table-hover">
 		<thead>
 			<th>FersName</th>
@@ -49,26 +50,22 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
-	
-<table class="table table-border table-hover">
-						<thead>
-							<th>mark</th>
-							<th>comments</th>
-						</thead>
-						<tbody>
-							<c:forEach items="${Marks}" var="markStudent">
-								<tr>
-									<td>${markStudent.mark}</td>
-									<td>${markStudent.comments}</td>
-								</tr>
-							</c:forEach>
-							</td>
-						</tbody>
-					</table>
-	
-	
-	
+	<table class="table table-border table-hover">
+		<thead>
+			<th>mark</th>
+			<th>comments</th>
+		</thead>
+		<tbody>
+			<c:forEach items="${Marks}" var="markStudent">
+				<tr>
+					<td>${markStudent.mark}</td>
+					<td>${markStudent.comments}</td>
+				</tr>
+			</c:forEach>
+			</td>
+		</tbody>
+	</table>
+   </div>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>

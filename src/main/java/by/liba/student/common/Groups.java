@@ -18,10 +18,10 @@ public class Groups {
 		public void setGroupNumber(String groupNumber) {
 			this.groupNumber = groupNumber;
 		}
-		public int getAvgMark() {
+		public Integer getAvgMark() {
 			return avgMark;
 		}
-		public void setAvgMark(int avgMark) {
+		public void setAvgMark(Integer avgMark) {
 			this.avgMark = avgMark;
 		}
          

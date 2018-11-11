@@ -44,17 +44,31 @@
 
 					<td>${student.firstName}</td>
 					<td>${student.secondName}</td>
-					
-					<c:forEach items="${Marks}" var="markStudent">
-						<tr>
-							<td>${markStudent.mark}</td>
-							<td>${markStudent.comments}</td>
-						</tr>	
-					</c:forEach>
+
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+
+
+	<table class="table table-border table-hover">
+		<thead>
+			<th>mark</th>
+			<th>comments</th>
+		</thead>
+		<tbody>
+			<c:forEach items="${Marks}" var="markStudent">
+				<tr>
+					<td>${markStudent.mark}</td>
+					<td>${markStudent.comments}</td>
+				</tr>
+			</c:forEach>
+			</td>
+		</tbody>
+	</table>
+
+
+
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>

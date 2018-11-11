@@ -1,7 +1,14 @@
 @charset "UTF-8";
-.container-custom{
+
+.container-custom {
 	width: 10vw;
 }
-.container-custom2{
-width: 	20vw;
+
+.container-custom2 {
+	width: 20vw;
+}
+
+table {
+	border-collapse: collapse; 
+	border: 1px solid grey;
 }
