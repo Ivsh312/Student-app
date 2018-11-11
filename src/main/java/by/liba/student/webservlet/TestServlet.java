@@ -11,12 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import by.liba.student.common.Marks;
 import by.liba.student.common.Students;
+import by.liba.student.common.Studies;
 
 public class TestServlet extends HttpServlet{
     
 	private final static List <Students> STUDENTS = new ArrayList<Students>();
-
+	private final static List <Marks> MARKS = new ArrayList<Marks>();
+	private final static List <Studies> STUDIES = new ArrayList<Studies>();
 	private static final long serialVersionUID = -3076373278255669151L;
 
 	@Override
@@ -24,6 +27,7 @@ public class TestServlet extends HttpServlet{
 			throws ServletException, IOException {	
 		    RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/TestJSPcool.jsp");
 		    req.setAttribute("Students", STUDENTS);
+		    req.setAttribute("Marks", MARKS);
 		    requestDispatcher.forward(req, resp);
 	}
 	
@@ -32,12 +36,15 @@ public class TestServlet extends HttpServlet{
 			throws ServletException, IOException {
 		    String first = req.getParameter("firstName");
 		    String second = req.getParameter("secondName");
+		    Integer mark = Integer.parseInt(req.getParameter("mark"));
+		    String comments = req.getParameter("comments");
 		    System.out.println(String.format("First name: %s, Second name: %s", first, second));
-
+		    System.out.println(String.format("mark: %s, comments: %s", mark, comments));
 		    STUDENTS.add(new Students(first, second));
-		    
+		    MARKS.add(new Marks(mark, comments));
 		    doGet(req, resp);
 	}
+
 	public static void main(String[] args) {
 		Students [] STUDENT = new Students[0];
 	    StringBuilder students = new StringBuilder();
