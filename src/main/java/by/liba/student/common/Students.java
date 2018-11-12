@@ -67,4 +67,11 @@ public class Students {
 		this.secondName = secondName;
 	}
 
+	@Override
+	public String toString() {
+		return "Students [id=" + id + ", firstName=" + firstName
+				+ ", secondName=" + secondName + ", avgMark=" + avgMark
+				+ ", groupNumber=" + groupNumber + "]";
+	}
+
 }

@@ -13,7 +13,7 @@ public class Professors {
 		super();
 	}
 	
-	public Professors(Integer id, String firstName, String secondName, String fatherdName, int avgMark) {
+	public Professors(Integer id, String firstName, String secondName, String fatherdName, Integer avgMark) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
