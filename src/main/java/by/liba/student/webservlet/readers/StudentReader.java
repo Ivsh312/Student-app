@@ -1,4 +1,4 @@
-package by.liba.student.webservlet;
+package by.liba.student.webservlet.readers;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -27,6 +27,7 @@ public class StudentReader {
 				student.setFirstName(data[1]);
 				student.setSecondName(data[2]);
 				students.add(student);
+				System.out.println(student);
 			}
 		}
 		return students;

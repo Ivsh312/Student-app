@@ -3,27 +3,68 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  
-  
-  <servlet>
-      <servlet-name>TestTestServlet</servlet-name>
-      <servlet-class>by.liba.student.webservlet.TestServlet</servlet-class>
-      <init-param>
-          <param-name>123</param-name>
-          <param-value>123</param-value>
-      </init-param>
-  </servlet>
-  
-  <servlet-mapping>
-      <servlet-name>TestTestServlet</servlet-name>
-      <url-pattern>/test</url-pattern>
-  </servlet-mapping>
-  <listener>
-      <listener-class>by.liba.student.webservlet.ApplicationContextListener</listener-class>
-  </listener>
-  <context-param>
-      <param-name>student.file.path</param-name>
-      <param-value>D:\\dev\\workspaces\\student-app\\resources\\res.csv</param-value>
-  </context-param>
+	<display-name>Archetype Created Web Application</display-name>
+
+	<servlet>
+		<servlet-name>Student</servlet-name>
+		<servlet-class>by.liba.student.webservlet.Student</servlet-class>
+		<init-param>
+			<param-name>123</param-name>
+			<param-value>123</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Professors</servlet-name>
+		<url-pattern>/professors</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>Professors</servlet-name>
+		<servlet-class>by.liba.student.webservlet.Professor</servlet-class>
+		<init-param>
+			<param-name>123</param-name>
+			<param-value>123</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Student</servlet-name>
+		<url-pattern>/student</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Marks</servlet-name>
+		<servlet-class>by.liba.student.webservlet.Mark</servlet-class>
+		<init-param>
+			<param-name>123</param-name>
+			<param-value>123</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Marks</servlet-name>
+		<url-pattern>/marks</url-pattern>
+	</servlet-mapping>
+	<listener>
+		<listener-class>by.liba.student.webservlet.StudentsContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>by.liba.student.webservlet.MarkContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>by.liba.student.webservlet.ProfessorsContextListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>student.file.path</param-name>
+		<param-value>D:\\resour\\student.csv</param-value>
+	</context-param>
+	<context-param>
+		<param-name>mark.file.path</param-name>
+		<param-value>D:\\resour\\marks.csv</param-value>
+	</context-param>
+	<context-param>
+		<param-name>professor.file.path</param-name>
+		<param-value>D:\\resour\\professor.csv</param-value>
+	</context-param>
 </web-app>

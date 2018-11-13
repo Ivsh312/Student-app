@@ -27,6 +27,12 @@ public class Students {
 		this.groupNumber = groupNumber;
 	}
 
+	public Students(Integer id, String firstName, String secondName) {
+		this.id = id;
+		this.firstName = firstName;
+		this.secondName = secondName;
+	}
+
 	public Integer getId() {
 		return id;
 	}
