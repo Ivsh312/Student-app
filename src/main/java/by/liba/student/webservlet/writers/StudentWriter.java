@@ -1,4 +1,4 @@
-package by.liba.student.webservlet.writers;
+package by.liba.student.webservlet;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,10 +9,10 @@ import java.util.List;
 
 import by.liba.student.common.Students;
 
-public class StudentWriter {
+public class StudentWriater {
 	 private final String path;
 
-		public StudentWriter(String path) {
+		public StudentWriater(String path) {
 			this.path = path;
 		}
 		public void writer(List<Students> students) throws IOException{

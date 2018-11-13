@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import org.omg.CORBA.RepositoryIdHelper;
+import org.omg.CORBA.RepositoryIdHelper;
 
 import by.liba.student.common.Groups;
 import by.liba.student.common.Marks;
@@ -20,7 +20,6 @@ import by.liba.student.common.Professors;
 import by.liba.student.common.Students;
 import by.liba.student.common.Studies;
 import by.liba.student.common.Users;
-import by.liba.student.webservlet.repositores.StudentRepository;
 
 public class TestServlet extends HttpServlet{
     
@@ -33,6 +32,7 @@ public class TestServlet extends HttpServlet{
 	private static final long serialVersionUID = -3076373278255669151L;
 
 	
+	private final String path = "D:\\dev\\workspaces\\student-app\\resources\\res.csv";
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {	
@@ -77,4 +77,16 @@ public class TestServlet extends HttpServlet{
 		
 	}
 	
+	public static void main(String[] args) {
+		Students [] STUDENT = new Students[0];
+	    StringBuilder students = new StringBuilder();
+	    students.append("<tr>");
+	    for(Students student : STUDENTS) {
+	    	students.append("<td>");
+	    	students.append(String.format("First name: %s, Second name: %s", student.getFirstName(), student.getSecondName()));
+	    	students.append("</td>");
+	    }
+	    students.append("</tr>");
+	    System.out.println(students);
+	}
 }
