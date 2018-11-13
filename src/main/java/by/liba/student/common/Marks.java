@@ -24,7 +24,7 @@ public class Marks {
 	
 	public Marks(Integer id, Integer mark, String comments, Integer studyId, Integer studentId, Integer proffessorId) {
 		super();
-		this.setId(id);
+		this.id = id;
 		this.mark = mark;
 		this.comments = comments;
 		this.studyId = studyId;
@@ -75,6 +75,12 @@ public class Marks {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Marks [id=" + id + ", mark=" + mark + ", comments=" + comments + ", studyId=" + studyId + ", studentId="
+				+ studentId + ", proffessorId=" + proffessorId + "]";
 	}
      
      

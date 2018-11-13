@@ -22,6 +22,12 @@ public class Professors {
 		this.avgMark = avgMark;
 	}
 
+	public Professors(String firstName, String secondName, String fatherdName) {
+		this.firstName = firstName;
+		this.secondName = secondName;
+		this.fatherdName = fatherdName;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -51,6 +57,12 @@ public class Professors {
 	}
 	public void setAvgMark(Integer avgMark) {
 		this.avgMark = avgMark;
+	}
+
+	@Override
+	public String toString() {
+		return "Professors [id=" + id + ", firstName=" + firstName + ", secondName=" + secondName + ", fatherdName="
+				+ fatherdName + ", avgMark=" + avgMark + "]";
 	}
     
 }

@@ -1,4 +1,4 @@
-package by.liba.student.webservlet;
+package by.liba.student.webservlet.repositores;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -27,18 +28,20 @@ public class StudentRepository {
       }
       
       public Students create(Students student){
-    	  String id = UUID.randomUUID().toString();
-    	  student.setId(Integer.parseInt(id));
-    	  this.students.put(Integer.parseInt(id), student);
+    	  Random random = new Random();
+    		 int id = random.nextInt(100);
+    	  student.setId(id);
+    	  this.students.put(id, student);
     	  return student;
       }
       
-      public void remove(String id){
+      public void remove(Integer id){
     	  this.students.remove(id);
       }
       
       public Students update(Students student){
     	  this.students.put(student.getId(), student);
+    	  System.out.println(this.students.remove(1));
     	  return student;
       }
 }
