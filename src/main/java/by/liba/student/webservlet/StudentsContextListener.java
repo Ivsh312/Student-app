@@ -21,12 +21,12 @@ public class StudentsContextListener implements ServletContextListener{
 			ServletContext sc = sce.getServletContext();
 			String filePath = sc.getInitParameter("student.file.path");
 			
-			students = new StudentReader(filePath).read();
-			this.studentRepository = new StudentRepository(students);
+//			students = new StudentReader(filePath).read();
+//			this.studentRepository = new StudentRepository(students);
 			
 			
 			sc.setAttribute("studentRepository", this.studentRepository);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 		
 		}

@@ -8,28 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.liba.student.common.Students;
+import by.liba.student.webservlet.Student;
 
-public class StudentReader {
+public class StudentReader implements LineMapper<Student>{
       private final String path;
 
 	public StudentReader(String path) {
 		this.path = path;
 	}
 	
-	public List<Students> read() throws FileNotFoundException, IOException{
-		List<Students> students = new ArrayList<Students>();
-		try(BufferedReader br = new BufferedReader(new FileReader(path))){
-			String line = null;
-			while((line = br.readLine()) != null){
-				String[] data = line.split(";");
-				Students student = new Students();
-				student.setId(Integer.parseInt(data[0]));
-				student.setFirstName(data[1]);
-				student.setSecondName(data[2]);
-				students.add(student);
-				System.out.println(student);
-			}
-		}
+	public Students mapLian(String line){
+		String[] data = line.split(";");
+		Students students = new Students();
+		students.setId(Integer.parseInt(data[0]));
+		students.setFirstName(data[1]);
+		students.setSecondName(data[2]);
 		return students;
 	}
 	
