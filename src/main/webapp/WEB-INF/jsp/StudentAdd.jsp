@@ -11,7 +11,7 @@
 <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<form action="/student-app/student" method="POST"
+	<form action="/student-app/studentAdd" method="POST"
 		class="container-custom2">
 		<div class="container-custom">
 			<div class="form-group">
@@ -22,26 +22,7 @@
 				<label>secondName</label> <input type='text' name='secondName'
 					class="form-control">
 			</div>
-			<button class="btn btn-success">Delete</button>
-		</div>
-		<button class="btn btn-success">Delete</button>
-		<div class="div-table">
-			<table class="table table-border table-hover">
-				<thead>
-					<th>FersName</th>
-					<th>SecondName</th>
-					<th>mark to delete</th>
-				</thead>
-				<tbody>
-					<c:forEach items="${Students}" var="student">
-						<tr>
-							<td>${student.firstName}</td>
-							<td>${student.secondName}</td>
-							<td><input type="checkbox" name="id" value="${student.id}" class="form-control">
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+			<button class="btn btn-success">add</button>
 		</div>
 	</form>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
