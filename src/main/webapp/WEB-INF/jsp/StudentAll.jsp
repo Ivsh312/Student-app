@@ -11,19 +11,8 @@
 <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<form action="/student-app/student" method="POST"
+	<form action="/student-app/studentAll" method="POST"
 		class="container-custom2">
-		<div class="container-custom">
-			<div class="form-group">
-				<label>firstName</label> <input type='text' name='firstName'
-					class="form-control">
-			</div>
-			<div class="form-group">
-				<label>secondName</label> <input type='text' name='secondName'
-					class="form-control">
-			</div>
-			<button class="btn btn-success">Delete</button>
-		</div>
 		<button class="btn btn-success">Delete</button>
 		<div class="div-table">
 			<table class="table table-border table-hover">
@@ -37,13 +26,15 @@
 						<tr>
 							<td>${student.firstName}</td>
 							<td>${student.secondName}</td>
-							<td><input type="checkbox" name="id" value="${student.id}" class="form-control">
+							<td><input type="checkbox" name="id" value="${student.id}">
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</form>
+	<li role="presentation" class="active">
+	<a href="http://localhost:9090/student-app/studentAdd">Add Student</a></li>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
