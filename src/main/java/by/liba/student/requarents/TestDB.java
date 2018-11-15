@@ -28,7 +28,7 @@ public class TestDB {
             System.out.println("iii1");
             con = DriverManager.getConnection(
             		"jdbc:mysql://localhost:3306/BEGANSS", "root",
-					"779259vrun13");         
+					"123");         
             java.sql.Statement state = con.createStatement();
 			sql = "SELECT * FROM BEGANSS.STUDENT";
 			res = state.executeQuery(sql);
