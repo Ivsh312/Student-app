@@ -1,6 +1,6 @@
 package by.liba.student.common;
 
-public class Marks {
+public class Marks extends Entity{
 	 private Integer id;
      private Integer mark;
      private String comments;

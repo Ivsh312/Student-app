@@ -26,8 +26,9 @@
 		</div>
 	</form>
 
-	<form action="/student-app/student" method="delete"
+	<form action="/student-app/student" method="POST"
 		class="container-custom2">
+		<input type="hidden" name="action" value="delete"/>
 		<div class="container-custom">
 			<div class="form-group">
 				<label>id</label> <input type='text' name='id' class="form-control">
@@ -43,9 +44,10 @@
 			<button class="btn btn-success">Up Date</button>
 		</div>
 	</form>
-   
-   	<form action="/student-app/student" method="put"
+
+	<form action="/student-app/student" method="POST"
 		class="container-custom2">
+		<input type="hidden" name="action" value="put"/>
 		<div class="container-custom">
 			<div class="form-group">
 				<label>id</label> <input type='text' name='id' class="form-control">
@@ -53,7 +55,7 @@
 			<button class="btn btn-success">Delete</button>
 		</div>
 	</form>
-   
+
 	<div class="div-table">
 		<table class="table table-border table-hover">
 			<thead>

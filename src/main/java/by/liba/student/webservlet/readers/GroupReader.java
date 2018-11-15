@@ -10,8 +10,8 @@ public class GroupReader implements LineMapper<Groups>{
 	public GroupReader(String path) {
 		this.path = path;
 	}
-	
-	public Groups mapLian(String line){
+	@Override
+	public Groups mapLine(String line) {
 		String[] data = line.split(";");
 		Groups groups = new Groups();
 		groups.setGroupNumber(data[0]);

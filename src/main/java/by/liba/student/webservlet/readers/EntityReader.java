@@ -9,28 +9,39 @@ import java.util.List;
 
 import by.liba.student.common.Students;
 
-public class EntityReader<T> implements Reader<T>{
-      private final String path;
-      private final LineMapper<T> mapper;
+public class EntityReader<T> implements Reader<T> {
+	private final String path;
+	private final LineMapper<T> mapper;
 
 	public EntityReader(String path, LineMapper<T> mapper) {
 		this.path = path;
 		this.mapper = mapper;
 	}
-	
-	public List<T> read(){
+
+	public List<T> read() {
 		List<T> items = new ArrayList<T>();
-		try(BufferedReader br = new BufferedReader(new FileReader(path))){
+
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(path));
 			String line = null;
-			while((line = br.readLine()) != null){
-//				T item = this.mapper.mapLine(line);
-//				items.add(item);
+			while ((line = br.readLine()) != null) {
+				T item = mapper.mapLine(line);
+				items.add(item);
 			}
-		}catch (Exception e) {
-			new RuntimeException(e);
+		} catch (Exception ex) {
+			throw new RuntimeException(ex);
+		} finally {
+			if (br != null)
+				try {
+					br.close();
+				} catch (Exception e) {
+					// ignore
+				}
+
 		}
+
 		return items;
 	}
-	
-      
+
 }

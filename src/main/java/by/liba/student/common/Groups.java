@@ -1,6 +1,6 @@
 package by.liba.student.common;
 
-public class Groups {
+public class Groups extends Entity{
          private String groupNumber;
          private Integer avgMark;
          

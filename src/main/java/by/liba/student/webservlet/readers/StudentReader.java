@@ -10,14 +10,16 @@ import java.util.List;
 import by.liba.student.common.Students;
 import by.liba.student.webservlet.Student;
 
-public class StudentReader implements LineMapper<Student>{
+public class StudentReader implements LineMapper<Students>{
       private final String path;
 
 	public StudentReader(String path) {
 		this.path = path;
 	}
 	
-	public Students mapLian(String line){
+
+	@Override
+	public Students mapLine(String line) {
 		String[] data = line.split(";");
 		Students students = new Students();
 		students.setId(Integer.parseInt(data[0]));

@@ -1,6 +1,6 @@
 package by.liba.student.common;
 
-public class Students {
+public class Students extends Entity{
 	private Integer id;
 	private String firstName;
 	private String secondName;

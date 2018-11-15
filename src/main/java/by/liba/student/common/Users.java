@@ -1,6 +1,6 @@
 package by.liba.student.common;
 
-public class Users {
+public class Users extends Entity{
 	private String user;
 	private String password;
 	private String Role;
