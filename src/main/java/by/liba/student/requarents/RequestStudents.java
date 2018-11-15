@@ -11,7 +11,7 @@ import by.liba.student.common.Students;
 import by.liba.student.common.Util;
 import by.liba.student.utils.ConnectToMysql;
 
-public class RequestStudents implements Request<Students> {
+public class RequestStudents extends Request<Students> {
 
 	@Override
 	public void createListItemS(List<Students> items) {
@@ -20,7 +20,8 @@ public class RequestStudents implements Request<Students> {
 	}
 
 	@Override
-	public void createItem(Students item) {
+	public Students createItem(Students item) {
+		return item;
 		// TODO Auto-generated method stub
 
 	}
@@ -71,8 +72,8 @@ public class RequestStudents implements Request<Students> {
 	}
 
 	@Override
-	public void updateItem(Students student) {
-		// Students student = new Students();
+	public Students updateItem(Students student) {
+
 		try {
 			Connection con = null;
 			java.sql.Statement state = null;
@@ -80,18 +81,11 @@ public class RequestStudents implements Request<Students> {
 			String sql = null;
 			try {
 				con = ConnectToMysql.getConnectionToMysql();
-				// sql = "UPDATE BEGANSS.STUDENT SET FIRST_NAME = 'Eva', SECOND_NAME = 'Zebroun'
-				// WHERE STUDENT_ID = '1'";
 				sql = String.format(
 						"UPDATE BEGANSS.STUDENT SET FIRST_NAME = '%s', SECOND_NAME = '%s' WHERE STUDENT_ID = '%s'",
 						student.getFirstName(), student.getSecondName(), student.getId());
 				state = con.createStatement();
-				state.execute(sql);// .executeQuery(sql);
-//				while (res.next()) {
-//					student.setFirstName(Util.trim(res.getString("FIRST_NAME")));
-//					student.setSecondName(Util.trim(res.getString("SECOND_NAME")));
-//					student.setId(res.getInt("STUDENT_ID"));
-//				}
+				state.execute(sql);
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -110,12 +104,12 @@ public class RequestStudents implements Request<Students> {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		return student;
 	}
 
 	@Override
-	public void updateListItemS(List<Students> items) {
-		// TODO Auto-generated method stub
-
+	public List<Students> updateListItemS(List<Students> items) {
+		return items;
 	}
 
 	@Override

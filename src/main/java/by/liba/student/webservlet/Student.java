@@ -19,13 +19,19 @@ import by.liba.student.webservlet.repositores.StudentRepository;
 public class Student extends HttpServlet {
 	private final static List<Students> STUDENTS = new ArrayList<Students>();
 	private StudentRepository studentRepository;
-
+    
+	@Override
+	public void init() throws ServletException {
+		getInitParameter("123");
+		ServletContext sc = getServletContext();
+		this.studentRepository = (StudentRepository) sc.getAttribute("studentRepository");
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		RequestStudents stud =  new RequestStudents();
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/Student.jsp");
-		req.setAttribute("Students", stud.getAll());
+		req.setAttribute("Students", studentRepository.findAll());
 		requestDispatcher.forward(req, resp);
 	}
 
@@ -35,22 +41,7 @@ public class Student extends HttpServlet {
 		String second = req.getParameter("secondName");
 		studentRepository.create(new Students(first, second));
 		System.out.println(String.format("First name: %s, Second name: %s", first, second));
-//		if (req.getParameter("id") != null) {
-//		 stud.deleteById(Integer.valueOf(req.getParameter("id")));
-//	}
 		STUDENTS.add(new Students(first, second));
 		doGet(req, resp);
-	}
-
-	@Override
-	public void init() throws ServletException {
-		getInitParameter("123");
-		ServletContext sc = getServletContext();
-		this.studentRepository = (StudentRepository) sc.getAttribute("studentRepository");
-	}
-
-	@Override
-	public void destroy() {
-
 	}
 }

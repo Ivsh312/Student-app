@@ -2,13 +2,34 @@ package by.liba.student.requarents;
 
 import java.util.List;
 
-public interface Request <T>{
-    public void createListItemS(List<T> items);
-    public void createItem(T item);
-    public void deleteItem(Integer id);
-    public void deleteListItemS(List<T> items);
-    public void updateItem(T item);
-    public void updateListItemS(List<T> items);
-    public T getById(Integer id);
-    
+public abstract class Request<D> {
+	public List<D> getAll() {
+		return null;
+	}
+
+	public void createListItemS(List<D> items) {
+	};
+
+	public D createItem(D item) {
+		return null;
+	};
+
+	public void deleteItem(Integer id) {
+	};
+
+	public void deleteListItemS(List<D> items) {
+	};
+
+	public D updateItem(D item) {
+		return null;
+	};
+
+	public List<D> updateListItemS(List<D> items) {
+		return null;
+	};
+
+	public D getById(Integer id) {
+		return null;
+	}
+
 }

@@ -33,8 +33,10 @@
 			</table>
 		</div>
 	</form>
-	<li role="presentation" class="active">
-	<a href="http://localhost:9090/student-app/studentAdd">Add Student</a></li>
+	<ul class="nav nav-pills">
+		<li role="presentation" class="active"><a
+			href="http://localhost:9090/student-app/studentAdd">Add Student</a></li>
+	</ul>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
