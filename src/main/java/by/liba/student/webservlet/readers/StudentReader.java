@@ -20,7 +20,6 @@ public class StudentReader implements LineMapper<Students>{
 
 	@Override
 	public Students mapLine(String line) {
-		System.out.println("Students mapLine");
 		String[] data = line.split(";");
 		Students students = new Students();
 		students.setId(Integer.parseInt(data[0]));

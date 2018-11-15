@@ -8,37 +8,38 @@
 	<servlet>
 		<servlet-name>Student</servlet-name>
 		<servlet-class>by.liba.student.webservlet.Student</servlet-class>
+		<init-param>
+			<param-name>123</param-name>
+			<param-value>123</param-value>
+		</init-param>
 	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Professors</servlet-name>
+		<url-pattern>/professors</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>Professors</servlet-name>
+		<servlet-class>by.liba.student.webservlet.Professor</servlet-class>
+		<init-param>
+			<param-name>123</param-name>
+			<param-value>123</param-value>
+		</init-param>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>Student</servlet-name>
 		<url-pattern>/student</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>StudentAll</servlet-name>
-		<servlet-class>by.liba.student.webservlet.StudentAll</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>StudentAll</servlet-name>
-		<url-pattern>/studentAll</url-pattern>
-	</servlet-mapping>
-	
-	
-	<servlet-mapping>
-		<servlet-name>Professors</servlet-name>
-		<url-pattern>/professors</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>Professors</servlet-name>
-		<servlet-class>by.liba.student.webservlet.Professor</servlet-class>
-	</servlet>
-
-
-
-	<servlet>
 		<servlet-name>Marks</servlet-name>
 		<servlet-class>by.liba.student.webservlet.Mark</servlet-class>
+		<init-param>
+			<param-name>123</param-name>
+			<param-value>123</param-value>
+		</init-param>
 	</servlet>
 
 	<servlet-mapping>

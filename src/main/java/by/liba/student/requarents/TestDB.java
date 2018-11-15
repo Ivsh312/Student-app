@@ -25,12 +25,14 @@ public class TestDB {
             List<Students> listStudent = new ArrayList<Students>();
     		try {
             Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("iii1");
             con = DriverManager.getConnection(
             		"jdbc:mysql://localhost:3306/BEGANSS", "root",
 					"779259vrun13");         
             java.sql.Statement state = con.createStatement();
 			sql = "SELECT * FROM BEGANSS.STUDENT";
 			res = state.executeQuery(sql);
+			System.out.println("iii2");
 			while (res.next()) {
 				System.out.println(res.getString("FIRST_NAME").trim());
 //				Students student = new Students();
