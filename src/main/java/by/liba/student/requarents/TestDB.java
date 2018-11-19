@@ -9,32 +9,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.liba.student.common.Students;
+import by.liba.student.utils.Database;
 
 public class TestDB {
 	
 	
 	
 	
-    public static void main(String[] args) throws SQLException {
-        try {
-        	System.out.println("iii");
-        	Connection con = null;
-    		ResultSet res = null;
-    		String sql = null;
-    		System.out.println("q");
-            List<Students> listStudent = new ArrayList<Students>();
-    		try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("iii1");
-            con = DriverManager.getConnection(
-            		"jdbc:mysql://localhost:3306/BEGANSS", "root",
-					"123");         
-            java.sql.Statement state = con.createStatement();
-			sql = "SELECT * FROM BEGANSS.STUDENT";
-			res = state.executeQuery(sql);
-			System.out.println("iii2");
-			while (res.next()) {
-				System.out.println(res.getString("FIRST_NAME").trim());
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        System.out.println("iii");
+		Connection con = null;
+		ResultSet res = null;
+		String sql = null;
+		System.out.println("q");
+		List<Students> listStudent = new ArrayList<Students>();
+		try {
+			Database db = new Database();//"jdbc/db"
+		System.out.println("iii1");
+		con = db.getConnectionToMysql();         
+		java.sql.Statement state = con.createStatement();
+		sql = "SELECT * FROM BEGANSS.STUDENT";
+		res = state.executeQuery(sql);
+		System.out.println("iii2");
+		while (res.next()) {
+			System.out.println(res.getString("FIRST_NAME").trim());
 //				Students student = new Students();
 //				student.setId(res.getInt("STUDENT_ID"));
 //				student.setFirstName();
@@ -42,17 +40,13 @@ public class TestDB {
 //				student.setFirstName(res.getString("SECOND_NAME").trim());
 //				listStudent.add(student);
 //				System.out.println("iii");
-			}
-			
-		} finally {
-			if (con != null) {
-				con.close();
-			}
 		}
-            
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+		
+} finally {
+		if (con != null) {
+			con.close();
+		}
+}
     }
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 //

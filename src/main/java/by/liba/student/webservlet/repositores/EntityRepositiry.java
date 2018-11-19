@@ -36,7 +36,7 @@ public class EntityRepositiry<T extends Entity> {
 		return entity;
 	}
 
-	public void remove(String id) {
+	public void remove(Integer id) {
 		entities.remove(id);
 	}
 

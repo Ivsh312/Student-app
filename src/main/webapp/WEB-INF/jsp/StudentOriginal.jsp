@@ -11,19 +11,15 @@
 <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<form action="/student-app/student" method="GET"
+	<form action="/student-app/student" method="POST"
 		class="container-custom2">
 		<div class="container-custom">
 			<div class="form-group">
-				<label>firstName</label> <input type='text' name='firstNameFiltr'
+				<label>firstName</label> <input type='text' name='firstName'
 					class="form-control">
 			</div>
 			<div class="form-group">
-				<label>secondName</label> <input type='text' name='secondnameSortFiltr'
-					class="form-control">
-			</div>
-			<div class="form-group">
-				<label>group number</label> <input type='text' name='groupNumberFiltr'
+				<label>secondName</label> <input type='text' name='secondName'
 					class="form-control">
 			</div>
 			<button class="btn btn-success">Send</button>
@@ -37,7 +33,7 @@
 				<th>SecondName</th>
 				<th>Id</th>
 			</thead>
-			<tbody id="tbody">
+			<tbody>
 				<c:forEach items="${Students}" var="student">
 					<tr>
 
@@ -52,46 +48,5 @@
 	</div>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
-	<script type="text/javascript">
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/student-app/student?json', false);
-		xhr.send();
-
-		if (xhr.status != 200) {
-
-			alert(xhr.status + ': ' + xhr.statusText);
-		} else {
-
-			var data = JSON.parse(xhr.responseText);
-
-		}
-
-		var body, tab, tr, td, tn, row, col;
-
-		body = document.getElementsByTagName('tbody')[0];
-
-		for (row = 0; row < data.length; row++) {
-
-			tr = document.createElement('tr');
-			var ob = data[row];
-			td = document.createElement('td');
-			tn = document.createTextNode(ob.firstName);
-			td.appendChild(tn);
-			tr.appendChild(td);
-
-			td = document.createElement('td');
-			tn = document.createTextNode(ob.secondName);
-			td.appendChild(tn);
-			tr.appendChild(td);
-			body.appendChild(tr);
-		}
-	</script>
-
-
-
-
-
-
 </body>
 </html>
