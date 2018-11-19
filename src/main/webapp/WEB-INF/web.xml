@@ -4,20 +4,6 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-
-
-	<servlet>
-		<servlet-name>TestServlet</servlet-name>
-		<servlet-class>by.liba.student.webservlet.TestServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>TestServlet</servlet-name>
-		<url-pattern>/test</url-pattern>
-	</servlet-mapping>
-
-
-
 	<servlet>
 		<servlet-name>Student</servlet-name>
 		<servlet-class>by.liba.student.webservlet.Student</servlet-class>
@@ -40,11 +26,43 @@
 	<servlet>
 		<servlet-name>Professors</servlet-name>
 		<servlet-class>by.liba.student.webservlet.Professor</servlet-class>
-		<init-param>
-			<param-name>123</param-name>
-			<param-value>123</param-value>
-		</init-param>
 	</servlet>
+
+
+	<filter-mapping>
+		<filter-name>AutoFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>AutoFilter</filter-name>
+		<filter-class>by.liba.student.webservlet.AutoFilter</filter-class>
+	</filter>
+
+
+	<filter>
+		<filter-name>LoggerFilter</filter-name>
+		<filter-class>by.liba.student.webservlet.LoggerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoggerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>by.liba.student.webservlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+
+
+
 
 	<servlet>
 		<servlet-name>Marks</servlet-name>
@@ -80,9 +98,9 @@
 		<param-name>professor.file.path</param-name>
 		<param-value>D:\\джавапроекты\\gite\\student-app\\libs\\professor.csv</param-value>
 	</context-param>
-	
-<resource-env-ref>
-    <resource-env-ref-name>jdbc/db</resource-env-ref-name>
-    <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
-</resource-env-ref>
+
+	<resource-env-ref>
+		<resource-env-ref-name>jdbc/db</resource-env-ref-name>
+		<resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
+	</resource-env-ref>
 </web-app>

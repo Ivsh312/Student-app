@@ -10,11 +10,13 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+import filters.StudentFilter;
 import by.liba.student.common.Students;
 //import by.liba.student.requarents.RequestStudents;
+import by.liba.student.requarents.Request;
 
-public class StudentRepository extends EntityRepositiry<Students>{ 
-	  public StudentRepository(List<Students>students){
-		  super(new ArrayList<Students>(students));
+public class StudentRepository extends EntityRepository<Students, StudentFilter>{ 
+	  public StudentRepository(Request <Students, StudentFilter> requarents){
+		  super(requarents);
 	  }
 }

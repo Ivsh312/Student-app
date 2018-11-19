@@ -27,33 +27,27 @@ public class RequestGroup implements Request<Groups, GroupFilter> {
 		ResultSet res = null;
 		String sql = null;
 		try {
+			con = database.getConnection();
 
-			try {
-				con = database.getConnectionToMysql();
-
-				if (this.getGroupNumber(group.getGroupNumber()) == null) {
-					sql = "INSERT INTO `beganss`.`group` " + "(`GROUP_NUMBER`, `AVG_MARK`) " + "VALUES (?, ?)";
-					preparedStatement = con.prepareStatement(sql);
-					preparedStatement.setString(1, group.getGroupNumber());
-					preparedStatement.setDouble(2, group.getAvgMark());
-					res = preparedStatement.executeQuery();
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				if (con != null) {
-					try {
-						con.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			if (this.getGroupNumber(group.getGroupNumber()) == null) {
+				sql = "INSERT INTO `beganss`.`group` " + "(`GROUP_NUMBER`, `AVG_MARK`) " + "VALUES (?, ?)";
+				preparedStatement = con.prepareStatement(sql);
+				preparedStatement.setString(1, group.getGroupNumber());
+				preparedStatement.setDouble(2, group.getAvgMark());
+				res = preparedStatement.executeQuery();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
-
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		}
 
 	}
@@ -100,35 +94,29 @@ public class RequestGroup implements Request<Groups, GroupFilter> {
 		String sql = null;
 		Groups group = null;
 		try {
+			con = database.getConnection();
+			sql = "SELECT * FROM BEGANSS.GROUP WHERE GROUP_NUMBER = ?";
+			preparedStatement = con.prepareStatement(sql);
+			preparedStatement.setString(1, groupNumber);
 
-			try {
-				con = database.getConnectionToMysql();
-				sql = "SELECT * FROM BEGANSS.GROUP WHERE GROUP_NUMBER = ?";
-				preparedStatement = con.prepareStatement(sql);
-				preparedStatement.setString(1, groupNumber);
-
-				res = preparedStatement.executeQuery();
-				group = new Groups();
-				while (res.next()) {
-					group.setGroupNumber(groupNumber);
-				}
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				if (con != null) {
-					try {
-						con.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
+			res = preparedStatement.executeQuery();
+			group = new Groups();
+			while (res.next()) {
+				group.setGroupNumber(groupNumber);
 			}
 
-		} catch (ClassNotFoundException e) {
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return group;
 	}

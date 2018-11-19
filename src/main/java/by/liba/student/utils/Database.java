@@ -10,20 +10,22 @@ import javax.sql.DataSource;
 
 public class Database {
 	
-//	private DataSource dataSource;
-//
-//	public Database(String jndiname) {
-//	    try {
-//	        dataSource = (DataSource) new InitialContext().lookup("java:comp/env/" + jndiname);
-//	    } catch (NamingException e) {
-//	        // Handle error that it not configured in JNDI.
-//	        throw new IllegalStateException(jndiname + " is missing in JNDI!", e);
-//	    }
-//	}
-//
-//	public Connection getConnection() throws SQLException {
-//	    return dataSource.getConnection();
-//	}
+	private DataSource dataSource;
+	public Database() {
+		
+	}
+	public Database(String jndiname) {
+	    try {
+	        dataSource = (DataSource) new InitialContext().lookup("java:comp/env/" + jndiname);
+	    } catch (NamingException e) {
+	        // Handle error that it not configured in JNDI.
+	        throw new IllegalStateException(jndiname + " is missing in JNDI!", e);
+	    }
+	}
+
+	public Connection getConnection() throws SQLException {
+	    return dataSource.getConnection();
+	}
 	
 	
 	

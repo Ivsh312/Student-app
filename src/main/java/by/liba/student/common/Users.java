@@ -16,6 +16,11 @@ public class Users extends Entity{
 		Role = role;
 	}
 
+	public Users(String name, String pass) {
+		this.user = name;
+		this.password = pass;
+	}
+
 	public void setUser(String user) {
 		this.user = user;
 	}
