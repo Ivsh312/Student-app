@@ -5,22 +5,20 @@ import java.util.List;
 import by.liba.student.common.Professors;
 
 public interface Request <T, D>{
-    public void createListItems(List<T> items);
     
-    public void createItem(T item);
+    public String createReuqestCreate(T entity, List<Object> params);
     
-    public T deleteItem(T item);
+    public String createReuqestDelete(T entity);
     
-    public T updateItem(T item);
+    public String createReuqestUpdate(T entity);
     
-    public List<T> updateListItems(List<T> items);
+    public String createReuqestGetById(Integer id);
     
-    public T getById(Integer id);
+    public String createReuqestGetAll(D filter, List<Object> params);
     
-    public List<T> getAll(D filtr);
+
     
-    public T deleteItemById(Integer id);
+
     
-    public List<T> deleteListItems(List<T> items);
     
 }

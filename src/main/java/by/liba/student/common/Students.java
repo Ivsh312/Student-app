@@ -1,14 +1,18 @@
 package by.liba.student.common;
 
+import java.util.Random;
+
 public class Students extends Entity{
 	private Integer id;
 	private String firstName;
 	private String secondName;
-	private Integer avgMark;
+	private Double avgMark;
 	private String groupNumber;
 
 	public Students() {
 		super();
+		Random r = new Random();
+		this.id = r.nextInt(111111);
 	}
 
 	public Students(String firstName, String secondName) {
@@ -18,7 +22,7 @@ public class Students extends Entity{
 	}
 
 
-	public Students(Integer id, String firstName, String secondName, Integer avgMark, String groupNumber) {
+	public Students(Integer id, String firstName, String secondName, Double avgMark, String groupNumber) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -41,11 +45,11 @@ public class Students extends Entity{
 		this.id = id;
 	}
 
-	public Integer getAvgMark() {
+	public Double getAvgMark() {
 		return avgMark;
 	}
 
-	public void setAvgMark(Integer avgMark) {
+	public void setAvgMark(Double avgMark) {
 		this.avgMark = avgMark;
 	}
 

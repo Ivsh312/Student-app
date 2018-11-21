@@ -26,7 +26,7 @@ public class TestDB {
 		try {
 			Database db = new Database();//"jdbc/db"
 		System.out.println("iii1");
-		con = db.getConnectionToMysql();         
+		con = db.getConnection();         
 		java.sql.Statement state = con.createStatement();
 		sql = "SELECT * FROM BEGANSS.STUDENT";
 		res = state.executeQuery(sql);

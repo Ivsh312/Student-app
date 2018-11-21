@@ -5,10 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
+<div class=" form-group-my">
    <form action="/student-app/login" method="POST"
-		class="container-custom2">
+		class="container-custom2 ">
 		<div class="container-custom">
 			<div class="form-group">
 				<label>Login</label> <input type='text' name='user'
@@ -21,6 +24,6 @@
 			<button class="btn btn-success">Send</button>
 		</div>
 	</form>
-   
+ </div>  
 </body>
 </html>

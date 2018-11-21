@@ -11,11 +11,9 @@ public interface Repository<T, D> {
 
 	public T findOne(Integer id) ;
 
-	public void create(T entity) ;
+	public int create(T entity) ;
 
-	public void remove(T entity);
-	
-	public void removeById(Integer id) ;
+	public T remove(T entity);
 
-	public T update(T entity) ;
+	public int update(T entity) ;
 }

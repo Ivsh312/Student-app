@@ -11,7 +11,18 @@
 <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<form action="/student-app/student" method="POST"
+<script type="text/javascript">
+		var d = $
+		{
+			Error
+		};
+		if (b === "incorrect Intput")
+			window.alert("incorrect Intput");
+		if (b === "was added successfully")
+			window.alert("was added successfully");
+	</script>
+	
+	<form action="/student-app/nprofessor" method="POST"
 		class="container-custom2">
 		<div class="container-custom">
 			<div class="form-group">
@@ -19,33 +30,17 @@
 					class="form-control">
 			</div>
 			<div class="form-group">
-				<label>secondName</label> <input type='text' name='secondName'
+				<label>secondName</label> <input type='text' name='secondname'
 					class="form-control">
 			</div>
-			<button class="btn btn-success">Send</button>
+			<div class="form-group">
+				<label>avg Mark</label> <input type='text' name='avgMark'
+					class="form-control">
+			</div>
+			<button class="btn btn-success">Add</button>
+
 		</div>
 	</form>
-
-	<div class="div-table">
-		<table class="table table-border table-hover">
-			<thead>
-				<th>FersName</th>
-				<th>SecondName</th>
-				<th>Id</th>
-			</thead>
-			<tbody>
-				<c:forEach items="${Students}" var="student">
-					<tr>
-
-						<td>${student.firstName}</td>
-						<td>${student.secondName}</td>
-						<td>${student.id}</td>
-
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>

@@ -8,11 +8,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import by.liba.student.common.Professors;
 import by.liba.student.common.Students;
+import by.liba.student.requarents.EntityRequest;
+import by.liba.student.utils.Database;
+import filters.ProfessorFilter;
+import filters.StudentFilter;
 
-public class ProfessorRepository extends EntityRepositiry<Professors>{
-	private final Map<Integer, Professors> professors = new ConcurrentHashMap<Integer, Professors>();
-	
-	public ProfessorRepository(List<Professors>professors){
-		  super(new ArrayList<Professors>(professors));
-	  }
+public class ProfessorRepository extends EntityRepository<Professors, ProfessorFilter>{ 
+	public ProfessorRepository(EntityRequest<Professors, ProfessorFilter> requarents, Database dataSource) {
+		super(requarents, dataSource);
+	}
 }

@@ -25,7 +25,8 @@ public class AutoFilter implements Filter{
 		HttpServletResponse respons = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 		if (session.getAttribute("user") == null && 
-				!req.getRequestURI().contains("/login")){
+				!req.getRequestURI().contains("/login")&&
+			!req.getRequestURI().contains(req.getContextPath() + "/css/")){
 			respons.sendRedirect(req.getContextPath() + "/login");
 		} else{
 			chain.doFilter(request, response);

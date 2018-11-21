@@ -11,6 +11,14 @@
 <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
+	<div class="top1">
+		<ul class="hr list-group-item list-group">
+			<li class="list-group-item"><a href="login">login</a></li>
+			<li class="list-group-item"><a href="marks">marks</a></li>
+			<li class="list-group-item"><a href="professors">professors</a></li>
+			<li class="list-group-item"><a href="student">student</a></li>
+		</ul>
+	</div>
 	<form action="/student-app/marks" method="POST"
 	class="container-custom2">
 		<div class="container-custom">

@@ -11,42 +11,51 @@
 <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<form action="/student-app/student" method="GET"
-		class="container-custom2">
-		<div class="container-custom">
-			<div class="form-group">
-				<label>firstName</label> <input type='text' name='firstNameFiltr'
-					class="form-control">
-			</div>
-			<div class="form-group">
-				<label>secondName</label> <input type='text' name='secondnameSortFiltr'
-					class="form-control">
-			</div>
-			<div class="form-group">
-				<label>group number</label> <input type='text' name='groupNumberFiltr'
-					class="form-control">
-			</div>
-			<button class="btn btn-success">Send</button>
-		</div>
-	</form>
+	<div class="top1">
+		<ul class="hr list-group-item list-group">
+			<li class="list-group-item"><a href="login">login</a></li>
+			<li class="list-group-item"><a href="marks">marks</a></li>
+			<li class="list-group-item"><a href="professors">professors</a></li>
+			<li class="list-group-item"><a href="student">student</a></li>
+		</ul>
+	</div>
+	<div class="form-buttom">
 
+		<div style="width: 341px;">
+
+			<form action="/student-app/student" method="GET"
+				class="container-custom2" style="width: 343px;">
+				<div class="container-custom">
+					<div class="form-group">
+						<label>firstName</label> <input type='text' name='firstNameFiltr'
+							class="form-control">
+					</div>
+					<div class="form-group">
+						<label>secondName</label> <input type='text'
+							name='secondnameSortFiltr' class="form-control">
+					</div>
+					<div class="form-group">
+						<label>group number</label> <input type='text'
+							name='groupNumberFiltr' class="form-control">
+					</div>
+				</div>
+				<button class="btn btn-success">Search</button>
+
+			</form>
+		</div>
+		<div>
+		
+		<a href="nstudent">new student</a>
+
+		</div>
+	</div>
 	<div class="div-table">
 		<table class="table table-border table-hover">
 			<thead>
 				<th>FersName</th>
 				<th>SecondName</th>
-				<th>Id</th>
 			</thead>
 			<tbody id="tbody">
-				<c:forEach items="${Students}" var="student">
-					<tr>
-
-						<td>${student.firstName}</td>
-						<td>${student.secondName}</td>
-						<td>${student.id}</td>
-
-					</tr>
-				</c:forEach>
 			</tbody>
 		</table>
 	</div>

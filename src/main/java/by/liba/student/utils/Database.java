@@ -9,34 +9,27 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class Database {
-	
+
 	private DataSource dataSource;
+
+
 	public Database() {
-		
-	}
-	public Database(String jndiname) {
-	    try {
-	        dataSource = (DataSource) new InitialContext().lookup("java:comp/env/" + jndiname);
-	    } catch (NamingException e) {
-	        // Handle error that it not configured in JNDI.
-	        throw new IllegalStateException(jndiname + " is missing in JNDI!", e);
-	    }
+		try {
+			dataSource = (DataSource) new InitialContext().lookup("java:comp/env/" + "jdbc/TestDB");
+		} catch (NamingException e) {
+			// Handle error that it not configured in JNDI.
+			throw new IllegalStateException("jdbc/TestDB" + " is missing in JNDI!", e);
+		}
 	}
 
 	public Connection getConnection() throws SQLException {
 	    return dataSource.getConnection();
 	}
-	
-	
-	
-	
-	
-	public static Connection getConnectionToMysql() throws ClassNotFoundException, SQLException {
-		Connection con = null;
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection(
-        		"jdbc:mysql://localhost:3306/BEGANSS", "root",
-				"779259vrun13");
-		return con;
-}
+
+//	public static Connection getConnection() throws ClassNotFoundException, SQLException {
+//		Connection con = null;
+//		Class.forName("com.mysql.jdbc.Driver");
+//		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/BEGANSS", "root", "779259vrun13");
+//		return con;
+//	}
 }
