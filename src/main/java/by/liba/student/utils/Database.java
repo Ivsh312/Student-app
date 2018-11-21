@@ -15,10 +15,10 @@ public class Database {
 
 	public Database() {
 		try {
-			dataSource = (DataSource) new InitialContext().lookup("java:comp/env/" + "jdbc/TestDB");
+			dataSource = (DataSource) new InitialContext().lookup("java:comp/env/" + "jdbc/db2");
 		} catch (NamingException e) {
 			// Handle error that it not configured in JNDI.
-			throw new IllegalStateException("jdbc/TestDB" + " is missing in JNDI!", e);
+			throw new IllegalStateException("jdbc/db2" + " is missing in JNDI!", e);
 		}
 	}
 
