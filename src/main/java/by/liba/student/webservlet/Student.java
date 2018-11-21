@@ -49,17 +49,13 @@ public class Student extends HttpServlet {
 		List<Students> students = repositoryDB.findAll(studentFilter);
 		req.setAttribute("Students", students);
 
-		if ("".equals(req.getParameter("json"))) {
+
 			resp.setContentType("application/json");
 
 			PrintWriter pw = resp.getWriter();
 			pw.print(toJson(students));
 			pw.close();
 
-		} else {
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/Student.jsp");
-			dispatcher.forward(req, resp);
-		}
 	}
 
 	@Override

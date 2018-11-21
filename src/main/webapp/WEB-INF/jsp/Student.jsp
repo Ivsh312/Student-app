@@ -23,7 +23,7 @@
 
 		<div style="width: 341px;">
 
-			<form action="/student-app/student" method="GET"
+			<form action="/student-app/student" onsubmit="eventClic(event)"
 				class="container-custom2" style="width: 343px;">
 				<div class="container-custom">
 					<div class="form-group">
@@ -44,8 +44,8 @@
 			</form>
 		</div>
 		<div>
-		
-		<a href="nstudent">new student</a>
+
+			<a href="nstudent">new student</a>
 
 		</div>
 	</div>
@@ -54,6 +54,7 @@
 			<thead>
 				<th>FersName</th>
 				<th>SecondName</th>
+				<th>Group</th>
 			</thead>
 			<tbody id="tbody">
 			</tbody>
@@ -63,44 +64,65 @@
 	<script src="js/bootstrap.min.js"></script>
 
 	<script type="text/javascript">
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/student-app/student?json', false);
-		xhr.send();
+		function eventClic(e) {
+			if (e) {
+				e.preventDefault();
+			}
 
-		if (xhr.status != 200) {
+			var body, tab, tr, td, tn, row, col, firstNameFiltr, secondnameSortFiltr, groupNumberFiltr;
+			firstNameFiltr = document.getElementsByName('firstNameFiltr')[0].value;
+			secondnameSortFiltr = document
+					.getElementsByName("secondnameSortFiltr")[0].value;
+			groupNumberFiltr = document.getElementsByName('groupNumberFiltr')[0].value;
+			body = document.getElementsByTagName('tbody')[0];
 
-			alert(xhr.status + ': ' + xhr.statusText);
-		} else {
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', '/student-app/studentGetJsin?'
+					+ addParam('firstNameFiltr', firstNameFiltr)
+					+ addParam('secondnameSortFiltr', secondnameSortFiltr)
+					+ addParam('groupNumberFiltr', groupNumberFiltr), true);
+			xhr.send();
+			if (xhr.readyState != 4)
+				return;
+			if (xhr.status != 200) {
 
-			var data = JSON.parse(xhr.responseText);
+				alert(xhr.status + ': ' + xhr.statusText);
+			} else {
 
+				var data = JSON.parse(xhr.responseText);
+				var table = createTable(data);
+
+			}
+
+			function createTable(data) {
+				for (row = 0; row < data.length; row++) {
+
+					tr = document.createElement('tr');
+					var ob = data[row];
+					td = document.createElement('td');
+					tn = document.createTextNode(ob.firstName);
+					td.appendChild(tn);
+					tr.appendChild(td);
+
+					td = document.createElement('td');
+					tn = document.createTextNode(ob.secondName);
+					td.appendChild(tn);
+					tr.appendChild(td);
+					body.appendChild(tr);
+
+					td = document.createElement('td');
+					tn = document.createTextNode(ob.groupNumber);
+					td.appendChild(tn);
+					tr.appendChild(td);
+					body.appendChild(tr);
+				}
+			}
 		}
-
-		var body, tab, tr, td, tn, row, col;
-
-		body = document.getElementsByTagName('tbody')[0];
-
-		for (row = 0; row < data.length; row++) {
-
-			tr = document.createElement('tr');
-			var ob = data[row];
-			td = document.createElement('td');
-			tn = document.createTextNode(ob.firstName);
-			td.appendChild(tn);
-			tr.appendChild(td);
-
-			td = document.createElement('td');
-			tn = document.createTextNode(ob.secondName);
-			td.appendChild(tn);
-			tr.appendChild(td);
-			body.appendChild(tr);
+		function addParam(field, value) {
+			return field + "=" + value + "&";
 		}
+		eventClic();
 	</script>
-
-
-
-
-
 
 </body>
 </html>

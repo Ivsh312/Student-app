@@ -33,7 +33,8 @@ public class LoginServlet extends HttpServlet{
 				req.getRequestURI().contains("/login")){
 			HttpSession session = req.getSession();
 			session.setAttribute("user", new Users(name, pass));
-			resp.sendRedirect(req.getContextPath() + "/login");
+			System.out.println(name);
+			resp.sendRedirect(req.getContextPath() + "/student");
 		}else{
 			doGet(req, resp);
 		}
