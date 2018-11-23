@@ -1,17 +1,18 @@
 package by.liba.student.common;
 
-public class Studies extends Entity{
+public class Subject extends Entity{
     private String name;
     private Integer hours;
     private Integer id;
-    private Integer avgMark;
+    private Double avgMark;
+    private Integer professorId;
     
     
-	public Studies() {
+	public Subject(){
 		super();
 	}
 	
-	public Studies(String name, Integer hours, Integer id, Integer avgMark) {
+	public Subject(String name, Integer hours, Integer id, Double avgMark) {
 		super();
 		this.name = name;
 		this.hours = hours;
@@ -27,12 +28,12 @@ public class Studies extends Entity{
 		this.id = id;
 	}
 
-	public Integer getAvgMark() {
+	public Double getAvgMark() {
 		return avgMark;
 	}
 
-	public void setAvgMark(Integer avgMark) {
-		this.avgMark = avgMark;
+	public void setAvgMark(Double d) {
+		this.avgMark = d;
 	}
 
 	public String getName() {
@@ -46,6 +47,14 @@ public class Studies extends Entity{
 	}
 	public void setHours(Integer hours) {
 		this.hours = hours;
+	}
+
+	public Integer getProfessorId() {
+		return professorId;
+	}
+
+	public void setProfessorId(Integer professorId) {
+		this.professorId = professorId;
 	}
     
 }

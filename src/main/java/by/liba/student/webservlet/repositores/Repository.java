@@ -13,7 +13,7 @@ public interface Repository<T, D> {
 
 	public int create(T entity) ;
 
-	public T remove(T entity);
+	public Integer remove(T entity);
 
 	public int update(T entity) ;
 }

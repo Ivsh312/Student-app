@@ -40,4 +40,11 @@ public class StudentFilter {
 	public void setGroupNumber(String groupNumber) {
 		this.groupNumber = groupNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "StudentFilter [firstName=" + firstName + ", secondname=" + secondname + ", groupNumber=" + groupNumber
+				+ "]";
+	}
+
 }

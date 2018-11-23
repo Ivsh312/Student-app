@@ -25,6 +25,7 @@ import filters.GroupFilter;
 import filters.StudentFilter;
 
 public class RequestStudents extends EntityRequest<Students, StudentFilter> {
+	private String defoltGroupNumber = "0"; 
 	private String tableName;
 	private EntityRepository<Groups, GroupFilter> groupRepository;
 
@@ -41,33 +42,41 @@ public class RequestStudents extends EntityRequest<Students, StudentFilter> {
 	@Override
 	public String createReuqestGetById() {
 		// return getAllSql + " WHERE ID_STUDENTS = ?";
-		return null;
+		return this.getGetAllSql() + " WHERE STUDENT_ID = ?";
 	}
 
 	@Override
 	public String createReuqestCreate(Students student, List<Object> params) {
-		Random random = new Random();
+		Random rand = new Random();
 		System.out.println("createReuqestCreate");
 		String groupNumber = ""; 
 		groupNumber = (new RequestStudents()).findGroupNumber(student.getGroupNumber());
-		if ("".equals(groupNumber)) {
+		//groupNumber = StringUtil.trim(groupNumber);
+		if ("".equals(groupNumber)||groupNumber == null) {
+			String def = "";
+			def = (new RequestStudents()).findGroupNumber(defoltGroupNumber);
+			if ("".equals(def)||def == null) {
 			Groups group = new Groups();
-			group.setGroupNumber(StringUtil.trim(groupNumber));
+			group.setGroupNumber(defoltGroupNumber);
 			group.setAvgMark(0.0);
+			student.setGroupNumber(defoltGroupNumber);
 			this.groupRepository.create(group);
+			}else {
+				student.setGroupNumber(defoltGroupNumber);
+			}
 		}
 		
-		CreateSql += "(FIRST_NAME, SECOND_NAME, GROUP_NUMBER, AVG_MARK, STUDENT_ID) VALUES ";
+		String CreateSql = this.getCreateSql()+ "(FIRST_NAME, SECOND_NAME, GROUP_NUMBER, AVG_MARK, STUDENT_ID) VALUES ";
 		CreateSql  += "('" +  student.getFirstName() + "', '"
 		+ student.getSecondName() + "', '" 
         + student.getGroupNumber() + "', '"
-        + student.getAvgMark() + "', '" + random.nextInt(32000)+"')";
+        + student.getAvgMark() + "', '" + rand.nextInt(32000)+"')";
 		return CreateSql;
 	}
 
 	@Override
 	public String createReuqestGetAll(StudentFilter filter, List<Object> params) {
-		return getAllSql + " WHERE " + SqlHelper.addLike(params, "FIRST_NAME", filter.getFirstName(), "AND")
+		return this.getGetAllSql() + " WHERE " + SqlHelper.addLike(params, "FIRST_NAME", filter.getFirstName(), "AND")
 				+ SqlHelper.addLike(params, "SECOND_NAME", filter.getSecondname(), "AND")
 				+ SqlHelper.addLike(params, "GROUP_NUMBER", filter.getGroupNumber(), "AND") + "1=1";
 
@@ -75,11 +84,10 @@ public class RequestStudents extends EntityRequest<Students, StudentFilter> {
 	}
 
 	@Override
-	public String createReuqestDelete(Students student) {
-//		CreateSql += " (FIRST_NAME, SECOND_NAME) VALUES ";
-//		return CreateSql + "('" + student.getFirstName() + "', '" + student.getSecondName() + "')";
-		return null;
+	public String createReuqestDelete(Students student, List<Object> params ) {
+		return getDeleteSql() + " WHERE " + SqlHelper.addFildDef(params, "STUDENT_ID", String.valueOf(student.getId()), "");
 	}
+
 
 	@Override
 	public String createReuqestUpdate(Students entity) {

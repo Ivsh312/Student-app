@@ -2,10 +2,10 @@ package by.liba.student.webservlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,12 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import by.liba.student.common.Students;
-import by.liba.student.requarents.Request;
-import by.liba.student.requarents.RequestStudents;
-import by.liba.student.webservlet.repositores.EntityRepositiry;
+
 import by.liba.student.webservlet.repositores.EntityRepository;
-import by.liba.student.webservlet.repositores.Repository;
-import by.liba.student.webservlet.repositores.StudentRepository;
+
 import filters.StudentFilter;
 
 public class Student extends HttpServlet {
@@ -31,7 +28,7 @@ public class Student extends HttpServlet {
 		ServletContext sc = getServletContext();
 		this.repositoryDB = (EntityRepository<Students, StudentFilter>) sc.getAttribute("studentRepository");
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -49,29 +46,39 @@ public class Student extends HttpServlet {
 		List<Students> students = repositoryDB.findAll(studentFilter);
 		req.setAttribute("Students", students);
 
+		resp.setContentType("application/json");
 
-			resp.setContentType("application/json");
-
-			PrintWriter pw = resp.getWriter();
-			pw.print(toJson(students));
-			pw.close();
+		PrintWriter pw = resp.getWriter();
+		pw.print(toJson(students));
+		pw.close();
 
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String first = req.getParameter("firstName");
-		String second = req.getParameter("secondName");
-		System.out.println(String.format("First name: %s, Second name: %s", first, second));
-		repositoryDB.create(new Students(first, second));
-		doGet(req, resp);
+		String firstName = req.getParameter("firstName");
+		String secondname = req.getParameter("secondname");
+		String groupNumber = req.getParameter("groupNumber");
+		Double avgMark = Double.parseDouble(req.getParameter("avgMark"));
+		Students students = new Students();
+		if (firstName != null && secondname != null && groupNumber != null && avgMark != 0.0) {
+			students.setFirstName(firstName);
+			students.setSecondName(secondname);
+			students.setGroupNumber(groupNumber);
+			students.setAvgMark(avgMark);
+			System.out.println(students);
+			repositoryDB.create(students);
+		}
 	}
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		Integer id = Integer.parseInt(req.getParameter("id"));
-//		repositoryDB.removeById(id);
-//		doGet(req, resp);
+		String idForDelete = req.getParameter("idForDelete");
+		Students students = new Students();
+		students.setId(Integer.valueOf(idForDelete));
+		if (idForDelete != null) {
+			repositoryDB.remove(students);
+		}
 	}
 
 	@Override
@@ -86,6 +93,7 @@ public class Student extends HttpServlet {
 
 	private static String toJson(Students student) {
 		String json = "{" + "\"id\": \"" + student.getId() + "\"," + "\"firstName\": \"" + student.getFirstName()
+				+ "\"," + "\"groupNumber\": \"" + student.getGroupNumber() 
 				+ "\"," + "\"secondName\": \"" + student.getSecondName() + "\"" + "}";
 		return json;
 

@@ -14,17 +14,17 @@
 	<div class="top1">
 		<ul class="hr list-group-item list-group">
 			<li class="list-group-item"><a href="login">login</a></li>
-			<li class="list-group-item"><a href="marks">marks</a></li>
-			<li class="list-group-item"><a href="professors">professors</a></li>
+			<li class="list-group-item"><a href="subject">subject</a></li>
+			<li class="list-group-item"><a href="professorsPage">professors</a></li>
 			<li class="list-group-item"><a href="student">student</a></li>
+			<li class="list-group-item"><a href=# onclick="logout()">Log out</a>
 		</ul>
 	</div>
 	<div class="form-buttom">
 
-		<div style="width: 341px;">
-
-			<form action="/student-app/student" onsubmit="eventClic(event)"
-				class="container-custom2" style="width: 343px;">
+		<div class="my-div-form">
+			<form onsubmit="eventClic(event)" class="container-custom2"
+				style="width: 343px;">
 				<div class="container-custom">
 					<div class="form-group">
 						<label>firstName</label> <input type='text' name='firstNameFiltr'
@@ -40,14 +40,34 @@
 					</div>
 				</div>
 				<button class="btn btn-success">Search</button>
-
 			</form>
 		</div>
-		<div>
-
-			<a href="nstudent">new student</a>
+		<div class="my-div-form">
+			<form onsubmit="addStudent(event)" class="container-custom2"
+				style="width: 343px;">
+				<div class="container-custom">
+					<div class="form-group">
+						<label>firstName</label> <input type='text' name='firstName'
+							class="form-control">
+					</div>
+					<div class="form-group">
+						<label>secondName</label> <input type='text' name='secondname'
+							class="form-control">
+					</div>
+					<div class="form-group">
+						<label>group number</label> <input type='text' name='groupNumber'
+							class="form-control">
+					</div>
+					<div class="form-group">
+						<label>avg markr</label> <input type='text' name='avgMark'
+							class="form-control">
+					</div>
+				</div>
+				<button class="btn btn-success">Add New Student</button>
+			</form>
 
 		</div>
+
 	</div>
 	<div class="div-table">
 		<table class="table table-border table-hover">
@@ -62,67 +82,6 @@
 	</div>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
-	<script type="text/javascript">
-		function eventClic(e) {
-			if (e) {
-				e.preventDefault();
-			}
-
-			var body, tab, tr, td, tn, row, col, firstNameFiltr, secondnameSortFiltr, groupNumberFiltr;
-			firstNameFiltr = document.getElementsByName('firstNameFiltr')[0].value;
-			secondnameSortFiltr = document
-					.getElementsByName("secondnameSortFiltr")[0].value;
-			groupNumberFiltr = document.getElementsByName('groupNumberFiltr')[0].value;
-			body = document.getElementsByTagName('tbody')[0];
-
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', '/student-app/studentGetJsin?'
-					+ addParam('firstNameFiltr', firstNameFiltr)
-					+ addParam('secondnameSortFiltr', secondnameSortFiltr)
-					+ addParam('groupNumberFiltr', groupNumberFiltr), true);
-			xhr.send();
-			if (xhr.readyState != 4)
-				return;
-			if (xhr.status != 200) {
-
-				alert(xhr.status + ': ' + xhr.statusText);
-			} else {
-
-				var data = JSON.parse(xhr.responseText);
-				var table = createTable(data);
-
-			}
-
-			function createTable(data) {
-				for (row = 0; row < data.length; row++) {
-
-					tr = document.createElement('tr');
-					var ob = data[row];
-					td = document.createElement('td');
-					tn = document.createTextNode(ob.firstName);
-					td.appendChild(tn);
-					tr.appendChild(td);
-
-					td = document.createElement('td');
-					tn = document.createTextNode(ob.secondName);
-					td.appendChild(tn);
-					tr.appendChild(td);
-					body.appendChild(tr);
-
-					td = document.createElement('td');
-					tn = document.createTextNode(ob.groupNumber);
-					td.appendChild(tn);
-					tr.appendChild(td);
-					body.appendChild(tr);
-				}
-			}
-		}
-		function addParam(field, value) {
-			return field + "=" + value + "&";
-		}
-		eventClic();
-	</script>
-
+	<script src="js/myjsStudent.js"></script>
 </body>
 </html>

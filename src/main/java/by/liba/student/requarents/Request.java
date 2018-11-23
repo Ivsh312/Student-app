@@ -8,7 +8,7 @@ public interface Request <T, D>{
     
     public String createReuqestCreate(T entity, List<Object> params);
     
-    public String createReuqestDelete(T entity);
+    public String createReuqestDelete(T entity, List<Object> params);
     
     public String createReuqestUpdate(T entity);
     

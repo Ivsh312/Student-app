@@ -13,28 +13,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import by.liba.student.common.Professors;
-
+import by.liba.student.common.Students;
 import by.liba.student.webservlet.repositores.EntityRepository;
 
 import filters.ProfessorFilter;
+import filters.StudentFilter;
 
-
-public class Professor extends HttpServlet{
-	private final static List <Professors> PROFESSORS = new ArrayList<Professors>();
+public class Professor extends HttpServlet {
+	private final static List<Professors> PROFESSORS = new ArrayList<Professors>();
 	private EntityRepository<Professors, ProfessorFilter> repositoryDB;
-	
+
 	@Override
 	public void init() throws ServletException {
 		ServletContext sc = getServletContext();
 		this.repositoryDB = (EntityRepository<Professors, ProfessorFilter>) sc.getAttribute("professorsRepository");
-	}	
-	
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String firstNameFiltr = req.getParameter("firstNameFiltr");
 		String secondnameFiltr = req.getParameter("secondnameSortFiltr");
-		String avgMark = req.getParameter("avgMark");
+		String avgMark = req.getParameter("avgMarkFiltr");
 		ProfessorFilter professorFilter = new ProfessorFilter();
 		if (firstNameFiltr != null)
 			professorFilter.setFirstName(firstNameFiltr);
@@ -45,24 +45,33 @@ public class Professor extends HttpServlet{
 
 		List<Professors> professors = repositoryDB.findAll(professorFilter);
 		req.setAttribute("Professors", professors);
-
-		if ("".equals(req.getParameter("json"))) {
-			resp.setContentType("application/json");
-
-			PrintWriter pw = resp.getWriter();
-			pw.print(toJson(professors));
-			pw.close();
-
-		} else {
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/Professor.jsp");
-			dispatcher.forward(req, resp);
-		}
+		resp.setContentType("application/json");
+		PrintWriter pw = resp.getWriter();
+		pw.print(toJson(professors));
+		pw.close();
 	}
-	
-	
-	private static String toJson(Professors professor) {
-		String json = "{" + "\"id\": \"" + professor.getId() + "\"," + "\"firstName\": \"" + professor.getFirstName()
-				+ "\"," + "\"secondName\": \"" + professor.getSecondName() + "\"" + "}";
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("doPost");
+		String firstName = req.getParameter("firstName");
+		String secondName = req.getParameter("secondName");
+		Double avgMark = Double.parseDouble(req.getParameter("avgMark"));
+		Professors professor = new Professors();
+		if (firstName != null && secondName != null && avgMark != 0.0) {
+			professor.setAvgMark(avgMark);
+			professor.setFirstName(firstName);
+			professor.setSecondName(secondName);
+		}
+		System.out.println(professor.toString());
+		repositoryDB.create(professor);
+	}
+
+	private static String toJson(Professors professors) {
+		String json = "{" + "\"id\": \"" + professors.getId() + "\"," 
+	            + "\"firstName\": \"" + professors.getFirstName()
+				+ "\"," + "\"avgMark\": \"" + professors.getAvgMark() 
+				+ "\"," + "\"secondName\": \"" + professors.getSecondName() + "\"" + "}";
 		return json;
 
 	}
@@ -71,33 +80,32 @@ public class Professor extends HttpServlet{
 		String json = "[";
 		if (professors != null) {
 			boolean firstItem = true;
-			for (Professors professor1 : professors) {
+			for (Professors professor : professors) {
 				if (firstItem) {
 					firstItem = false;
 				} else {
 					json += ",";
 				}
-				json += toJson(professor1);
+				json += toJson(professor);
 			}
 		}
 
 		json += "]";
 		return json;
 	}
-	
-	
+
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String first = req.getParameter("firstName");
-		String second = req.getParameter("secondName");
-		System.out.println(String.format("First name: %s, Second name: %s", first, second));
-		repositoryDB.create(new Professors(first, second));
-		doGet(req, resp);
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String idForDelete = req.getParameter("idForDelete");
+		Professors professors = new Professors();
+		professors.setId(Integer.valueOf(idForDelete));
+		if (idForDelete != null) {
+			repositoryDB.remove(professors);
+		}
 	}
-	
-	
+
 	@Override
 	public void destroy() {
-		
+
 	}
 }

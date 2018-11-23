@@ -17,63 +17,62 @@
 			<li class="list-group-item"><a href="subject">subject</a></li>
 			<li class="list-group-item"><a href="professorsPage">professors</a></li>
 			<li class="list-group-item"><a href="student">student</a></li>
-			<li class="list-group-item"><a href=# onclick="logout()">Log out</a>
+			<li class="list-group-item"><a href=# onclick="logout()">Log
+					out</a>
 		</ul>
 	</div>
-	<div>
 	<div class="form-buttom">
+
 		<div class="my-div-form">
 			<form onsubmit="eventClic(event)" class="container-custom2"
 				style="width: 343px;">
 				<div class="container-custom">
 					<div class="form-group">
-						<label>firstName</label> <input type='text' name='firstNameFiltr'
+						<label>name Subject</label> <input type='text' name='nameSubF'
 							class="form-control">
 					</div>
 					<div class="form-group">
-						<label>secondName</label> <input type='text'
-							name='secondnameSortFiltr' class="form-control">
-					</div>
-
-					<div class="form-group">
-						<label>avg Mark</label> <input type='text' name='avgMarkFiltr'
+						<label>hours</label> <input type='text' name='hoursF'
 							class="form-control">
 					</div>
-					<button class="btn btn-success">Search</button>
+					<div class="form-group">
+						<label>avgMark</label> <input type='text' name='avgMarkF'
+							class="form-control">
+					</div>
 				</div>
+				<button class="btn btn-success">Search</button>
 			</form>
 		</div>
-
-
-
 		<div class="my-div-form">
-			<form onsubmit="addProfessor(event)" class="container-custom2"
+			<form onsubmit="addStudent(event)" class="container-custom2"
 				style="width: 343px;">
 				<div class="container-custom">
 					<div class="form-group">
-						<label>firstName</label> <input type='text' name='firstName'
+						<label>name Subject</label> <input type='text' name='nameSub'
 							class="form-control">
 					</div>
 					<div class="form-group">
-						<label>secondName</label> <input type='text' name='secondName'
+						<label>hours</label> <input type='text' name='hours'
 							class="form-control">
 					</div>
 					<div class="form-group">
-						<label>avg markr</label> <input type='text' name='avgMark'
+						<label>avgMark</label> <input type='text' name='avgMark'
 							class="form-control">
 					</div>
 				</div>
-				<button class="btn btn-success">Add New Professor</button>
+				<button class="btn btn-success">Add New Subject</button>
 			</form>
+
 		</div>
+
 	</div>
-	</div>
+
 	<div class="div-table">
 		<table class="table table-border table-hover">
 			<thead>
-				<th>FersName</th>
-				<th>SecondName</th>
-				<th>Avg Mark</th>
+				<th>name Subject</th>
+				<th>hours</th>
+				<th>avgMark</th>
 			</thead>
 			<tbody id="tbody">
 			</tbody>
@@ -81,6 +80,7 @@
 	</div>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/myjsProf.js"></script>
+	<script src="js/myjsSubject.js"></script>
+
 </body>
 </html>

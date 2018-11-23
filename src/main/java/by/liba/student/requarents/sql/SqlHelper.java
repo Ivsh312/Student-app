@@ -25,5 +25,15 @@ public class SqlHelper {
 		}
 		return sql;
 	}
+	
+	
+	public static String addFildDef(List<Object> params, String field, String value, String operator) {
+		String sql = "";
+		if (!isEmpty(value)) {
+			sql = field + "= ? " + operator + " ";
+			params.add(value);
+		}
+		return sql;
+	}
 
 }

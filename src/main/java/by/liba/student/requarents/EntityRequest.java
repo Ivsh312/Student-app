@@ -6,11 +6,11 @@ import java.util.List;
 
 public abstract class EntityRequest<T, D> implements Request<T, D>{
     
-	private String tableName;	
-    public String getAllSql;
-    public String CreateSql;
-    public String DeleteSql;
-    public String UpdateSql;
+	private final String tableName;	
+	private final String getAllSql;
+	private final String CreateSql;
+	private final String DeleteSql;
+	private final String UpdateSql;
     
     public EntityRequest(String tableName) {
     	this.tableName = tableName;
@@ -25,7 +25,7 @@ public abstract class EntityRequest<T, D> implements Request<T, D>{
     public abstract String createReuqestGetById();
     public abstract String createReuqestCreate(T entity, List<Object> params);
     public abstract String createReuqestGetAll(D filter, List<Object> params);
-    public abstract String createReuqestDelete(T entity);
+    public abstract String createReuqestDelete(T entity, List<Object> params);
     public abstract String createReuqestUpdate(T entity);
 	public abstract String createReuqestGetByGroupNumber(String groupId);
 
@@ -33,40 +33,23 @@ public abstract class EntityRequest<T, D> implements Request<T, D>{
 		return tableName;
 	}
 
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
-	}
-
 	public String getGetAllSql() {
 		return getAllSql;
 	}
 
-	public void setGetAllSql(String getAllSql) {
-		this.getAllSql = getAllSql;
-	}
 
 	public String getCreateSql() {
 		return CreateSql;
 	}
 
-	public void setCreateSql(String createSql) {
-		CreateSql = createSql;
-	}
 
 	public String getDeleteSql() {
 		return DeleteSql;
 	}
 
-	public void setDeleteSql(String deleteSql) {
-		DeleteSql = deleteSql;
-	}
 
 	public String getUpdateSql() {
 		return UpdateSql;
-	}
-
-	public void setUpdateSql(String updateSql) {
-		UpdateSql = updateSql;
 	}
 
 }

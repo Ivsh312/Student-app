@@ -8,41 +8,74 @@
 		<servlet-name>StudentPage</servlet-name>
 		<servlet-class>by.liba.student.webservlet.StudentPage</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>StudentPage</servlet-name>
 		<url-pattern>/student</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<servlet-name>Student</servlet-name>
 		<servlet-class>by.liba.student.webservlet.Student</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Student</servlet-name>
-		<url-pattern>/studentGetJsin</url-pattern>
+		<url-pattern>/studentGetJson</url-pattern>
 	</servlet-mapping>
-	studentGetJsin
-	
+
 	<servlet-mapping>
 		<servlet-name>Professors</servlet-name>
+		<url-pattern>/professorsPage</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Professors</servlet-name>
+		<servlet-class>by.liba.student.webservlet.ProfessorsPage</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>ProfessorsPage</servlet-name>
 		<url-pattern>/professors</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>Professors</servlet-name>
+		<servlet-name>ProfessorsPage</servlet-name>
 		<servlet-class>by.liba.student.webservlet.Professor</servlet-class>
 	</servlet>
 
+
+
 	<servlet-mapping>
-		<servlet-name>NewStudent</servlet-name>
-		<url-pattern>/nstudent</url-pattern>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
-		<servlet-name>NewStudent</servlet-name>
-		<servlet-class>by.liba.student.webservlet.AddStudent</servlet-class>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>by.liba.student.webservlet.Logout</servlet-class>
 	</servlet>
+
+
+	<servlet>
+		<servlet-name>SubjectPage</servlet-name>
+		<servlet-class>by.liba.student.webservlet.SubjectPage</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SubjectPage</servlet-name>
+		<url-pattern>/subject</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Subject</servlet-name>
+		<servlet-class>by.liba.student.webservlet.Subjects</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Subject</servlet-name>
+		<url-pattern>/subjectGetJson</url-pattern>
+	</servlet-mapping>
 
 	<filter-mapping>
 		<filter-name>AutoFilter</filter-name>
@@ -84,15 +117,8 @@
 		</init-param>
 	</servlet>
 
-	<servlet-mapping>
-		<servlet-name>Marks</servlet-name>
-		<url-pattern>/marks</url-pattern>
-	</servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>NewProfessor</servlet-name>
-		<url-pattern>/nprofessor</url-pattern>
-	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>NewProfessor</servlet-name>
 		<servlet-class>by.liba.student.webservlet.AddProfessor</servlet-class>

@@ -26,8 +26,8 @@ public class RequestProfessors extends EntityRequest<Professors, ProfessorFilter
 	
 	@Override
 	public String createReuqestGetById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.getGetAllSql() + " WHERE ID_STUDENTS = ?";
 	}
 
 	@Override
@@ -53,8 +53,7 @@ public class RequestProfessors extends EntityRequest<Professors, ProfessorFilter
 	public String createReuqestCreate(Professors entity, List<Object> params) {
 		Random random = new Random();
 
-		
-		CreateSql += "(FIRST_NAME, SECOND_NAME, AVG_MARK, PROFESS_ID) VALUES ";
+		String CreateSql = getCreateSql() + "(FIRST_NAME, SECOND_NAME, AVG_MARK, PROFESS_ID) VALUES ";
 		CreateSql  += "('" +  entity.getFirstName() + "', '"
 		+ entity.getSecondName() + "', '" 
         + entity.getAvgMark() + "', '" + random.nextInt(32000)+"')";
@@ -65,16 +64,15 @@ public class RequestProfessors extends EntityRequest<Professors, ProfessorFilter
 	@Override
 	public String createReuqestGetAll(ProfessorFilter filter, List<Object> params) {
 		System.out.println("0.0".equals(Double.toString(filter.getAvgMark())));
-		String sql = getAllSql + " WHERE " + SqlHelper.addLike(params, "FIRST_NAME", filter.getFirstName(), "AND")
+		String sql = getGetAllSql() + " WHERE " + SqlHelper.addLike(params, "FIRST_NAME", filter.getFirstName(), "AND")
 		+ SqlHelper.addLike(params, "SECOND_NAME", filter.getSecondname(), "AND")
 		+ SqlHelper.addLike(params, "AVG_MARK", Double.toString(filter.getAvgMark()), "AND") + "1=1";
 		return sql;
 	}
 
 	@Override
-	public String createReuqestDelete(Professors entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public String createReuqestDelete(Professors professor, List<Object> params) {
+		return getDeleteSql() + " WHERE " + SqlHelper.addFildDef(params, "PROFESS_ID", String.valueOf(professor.getId()), "");
 	}
 
 	@Override
